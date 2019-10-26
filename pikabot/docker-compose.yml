@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+  pikabot:
+    image: hongzai.io/pikabot:0.1
+    build: .
+    restart: always
+    environment:
+      SLACK_VERIFICATION_TOKEN: ${SLACK_VERIFICATION_TOKEN:-changeme}
+      SLACK_SIGNING_SECRET: ${SLACK_SIGNING_SECRET:-changeme}
+    volumes:
+      - ./src:/app
+    ports:
+      - 8080:8080
+
+  nginx:
+    image: nginx:1.15-alpine
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
