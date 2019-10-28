@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"math/rand"
 	"net/http"
 	"unicode"
 
@@ -47,7 +48,7 @@ func slashCommandHandler(w http.ResponseWriter, r *http.Request) {
 			text := []rune(s.Text)
 
 			for index, c := range text {
-				if index % 2 == 0 {
+				if rand.Int() % 2 == 0 {
 					text[index] = unicode.ToUpper(c)
 				} else {
 					text[index] = unicode.ToLower(c)
