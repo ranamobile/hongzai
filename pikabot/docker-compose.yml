@@ -9,6 +9,7 @@ services:
     environment:
       SLACK_VERIFICATION_TOKEN: ${SLACK_VERIFICATION_TOKEN:-changeme}
       SLACK_SIGNING_SECRET: ${SLACK_SIGNING_SECRET:-changeme}
+      SLACK_PIKA_SCOREFILE: ${SLACK_PIKA_SCOREFILE:-changeme}
     volumes:
       - ./src:/app
     ports:
