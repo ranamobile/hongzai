@@ -11,7 +11,7 @@ services:
       SLACK_SIGNING_SECRET: ${SLACK_SIGNING_SECRET:-changeme}
       SLACK_PIKA_SCOREFILE: ${SLACK_PIKA_SCOREFILE:-changeme}
     volumes:
-      - ./src:/app
+      - ./pikascores:/app/pikascores
     ports:
       - 8080:8080
 
