@@ -1,0 +1,3 @@
+[submodule "pikabot"]
+	path = pikabot
+	url = git@github.com:ranamobile/pikabot.git
